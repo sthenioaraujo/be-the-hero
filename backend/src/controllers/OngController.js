@@ -1,4 +1,5 @@
-const crypto = require('crypto');
+//const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
         const { name, email, whatsapp, city, uf } = request.body;
 
         // Criando id com String aleatória utilizando "crypto"
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
 
         // Comando "await" faz com que sistema aguarde o fim da inserção para executar a próxima sentença
         await connection('ongs').insert({
